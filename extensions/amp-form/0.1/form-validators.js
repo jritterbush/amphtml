@@ -18,6 +18,7 @@ import {Services} from '../../../src/services';
 import {ValidationBubble} from './validation-bubble';
 import {createCustomEvent} from '../../../src/event-helper';
 import {dev, devAssert} from '../../../src/log';
+import {iterateCursor} from '../../../src/dom';
 import {toWin} from '../../../src/types';
 
 /** @const @private {string} */
@@ -171,7 +172,7 @@ export class FormValidator {
    * @private
    */
   checkTextAreaValidityInForm_(form) {
-    form.querySelectorAll('textarea').forEach(i => this.checkInputValidity(i));
+    iterateCursor(form.querySelectorAll('textarea'), this.checkInputValidity);
   }
 
   /**
